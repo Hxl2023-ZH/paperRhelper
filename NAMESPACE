@@ -2,4 +2,4 @@
 
 export(crossref_citation)
 export(pubmed_extract)
-importFrom(rcrossref,"cr_citation_count()")
+importFrom(rcrossref,cr_citation_count)
