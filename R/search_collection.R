@@ -163,7 +163,7 @@ pubmed_extract <- function(root = 'https://pubmed.ncbi.nlm.nih.gov/?term=(Wang,%
 #'
 #' @return Number of citations, etc.
 #' @export
-#' @importFrom rcrossref cr_citation_count()
+#' @importFrom rcrossref cr_citation_count
 #'
 #' @examples
 #' \donttest{
