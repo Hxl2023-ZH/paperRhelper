@@ -5,11 +5,10 @@
 \title{Literature translation function based on Baidu Translation API.}
 \usage{
 fanyi(
-  q = "apple",
-  from = "en",
+  q = "偉大な中国人民万歳",
+  from = "auto",
   to = "zh",
   appid = "",
-  salt = "1435660288",
   key = "",
   encoding = "utf-8"
 )
@@ -23,8 +22,6 @@ fanyi(
 
 \item{appid}{Your Baidu Translation API ID.}
 
-\item{salt}{Random Password.}
-
 \item{key}{Your Baidu Translation API key.}
 
 \item{encoding}{Encoding method.}
@@ -37,6 +34,6 @@ Literature translation function based on Baidu Translation API.
 }
 \examples{
 \donttest{
-fanyi(appid = "20231218001914384", key = "qHUNma632FtElNsgSPaM")
+fanyi(appid = "xxxxxxxxxxxxxx", key = "xxxxxxxxxxxxxx")
 }
 }

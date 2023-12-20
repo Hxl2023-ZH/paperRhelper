@@ -4,7 +4,6 @@
 #' @param from The original language of the text.
 #' @param to Target language.
 #' @param appid Your Baidu Translation API ID.
-#' @param salt Random Password.
 #' @param key Your Baidu Translation API key.
 #' @param encoding Encoding method.
 #'
@@ -16,15 +15,16 @@
 #'
 #' @examples
 #' \donttest{
-#' fanyi(appid = "20231218001914384", key = "qHUNma632FtElNsgSPaM")
+#' fanyi(appid = "xxxxxxxxxxxxxx", key = "xxxxxxxxxxxxxx")
 #' }
-fanyi <- function(q = "apple",
-                  from = "en",
+fanyi <- function(q = "偉大な中国人民万歳",
+                  from = "auto",
                   to = "zh",
                   appid = "",
-                  salt = "1435660288",
                   key = "",
                   encoding = "utf-8") {
+
+  salt <- as.character(sample(10000:99999, 1))
   sign = paste0(appid, q, salt, key)
   sign = md5(sign)
   url = modify_url("http://api.fanyi.baidu.com/api/trans/vip/translate",
