@@ -42,9 +42,24 @@ library(paper.Rhelper)
  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character 
 ```
 
-gscholar_analysis(): 
+**gscholar_analysis()**: Citation information of the literature was obtained from the Google Scholar database. Some users may need to go through a network proxy to access Google Scholar databases.
 
-**crossref_citation()**: Use the cr_citation_count() function in the R package rcrossref to obtain the number of citations of the paper in the crossref database, and return a data frame (*crossref_citation_table*). Due to network reasons, using this feature may require users to use a network proxy.
+```R
+# example
+> r.proxy::proxy()# Enable network proxy, disable: r.proxy::noproxy()
+> paper_title <- "The hematologic consequences of obesity"
+> gscholar_analysis(paper_title = paper_title)
+> cited_title
+> cited_title
+ [1] "[HTML][HTML] Pandemics of the 21st century: the risk factor for obese people"                                                                                              
+ [2] "Accelerating action to reduce anemia: Review of causes and risk factors and related data needs"                             
+...
+> summary(cited_title)
+   Length     Class      Mode 
+       93 character character 
+```
+
+**crossref_citation()**: Use the *cr_citation_count()* function in the R package rcrossref to obtain the number of citations of the paper in the crossref database, and return a data frame (*crossref_citation_table*). Due to network reasons, using this feature may require users to use a network proxy.
 
 ```R
 # example
@@ -76,7 +91,7 @@ gscholar_analysis():
 
 **build_author_network()**: Based on the extracted results, the collaboration network diagram of authors of different articles is drawn.
 
-**plot_coauthors()**: This function comes from the R package scholar and can be used to draw network relationship diagrams. Users can make changes to drawing parameters.
+**plot_coauthors()**: This function comes from the R package scholar (https://github.com/YuLab-SMU/scholar) and can be used to draw network relationship diagrams. Users can make changes to drawing parameters.
 
 ```R
 # example
@@ -135,16 +150,47 @@ opened      "closed"                                             can read    "ye
 [1] "伟大的中国人民万岁"
 ```
 
-cited_extract():
+**cited_extract()**: The function is still under development.
 
-plot_coauthors():
+**keyword_plot()**: Draw a word cloud of keywords.
 
-keyword_plot():
+```R
+# example
+> keyword_plot(final_table$Keyword)
+```
 
-year_plot():
 
-pdf_doi_extract():
 
-pdf_reference_extract():
+**year_plot()**: Draw a line chart of the number of publications per year.
+
+```R
+# example
+> year_plot(final_table$Year)
+```
+
+
+
+pdf_reference_extract()**: Parse PDF format files and extract the reference of the literature.
+
+```R
+# example
+setwd("/you/working/dir/")
+pdf_text <- pdf_text("Machine_learning_for_microbiologists.pdf")
+begin_word <- "References|REFERNCES"
+end_word <- "Acknowledgements"
+
+pdf_reference_extract(pdf_text = pdf_text, begin_word = begin_word, end_word = end_word)
+# References are automatically saved in the "pdf_reference_extract.txt" file.
+```
+
+**pdf_doi_extract()**: Parse PDF format files and extract the doi value of the literature.
+
+```R
+# example
+> pdf_doi_extract(pdf_text = pdf_text)
+[1] "nature reviews microbiology                   https://doi.org/10.1038/s41579-023-00984-1"
+```
 
 ## Note
+
+This package is still under development.
