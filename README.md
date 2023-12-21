@@ -91,6 +91,7 @@ myauthor[1] <- NULL # The document corresponding to myauthor[1] is "10.1080/1554
 g <- build_author_network(myauthor)
 plot_coauthors(g) 
 ```
+![image](https://github.com/Hxl2023-ZH/paperRhelper/assets/126218017/0da63b80-9075-4f1f-afe3-08c3ae0f6103)
 
 
 
