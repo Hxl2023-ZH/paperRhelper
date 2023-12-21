@@ -167,7 +167,9 @@ for (i in 1:length(title_tracslate)){
 
 > title_tracslate
 [1] "Guidelines for the use and interpretation of assays for monitoring autophagy (3rd edition)."                          
-[2] "Synthesis and Application Dichalcogenides as Radical Reagents with Photochemical Technology."                         ...                                                               > title_cn
+[2] "Synthesis and Application Dichalcogenides as Radical Reagents with Photochemical Technology." 
+...
+> title_cn
 [1] "监测自噬测定的使用和解释指南（第3版）。"                      
 [2] "光化学技术合成二硫族化合物作为自由基试剂及其应用。"           
 [3] "Pinocembrin⁻卵磷脂复合物：特性、溶解性和抗氧化活性。"         
