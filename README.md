@@ -150,6 +150,32 @@ opened      "closed"                                             can read    "ye
 [1] "伟大的中国人民万岁"
 ```
 
+Use translation functions to translate extracted information, such as translating all article titles into Chinese.
+
+```R
+# example
+title_tracslate <- final_table$Title
+title_cn <- c()
+for (i in 1:length(title_tracslate)){
+  translate_cn <- NULL
+  print(title_tracslate[[i]])
+  Sys.sleep(10) # Avoid access failures caused by frequent visits
+  title_cn <- c(title_cn, 
+                fanyi(q = title_tracslate[[i]], appid = "202312180xxxxxxxx", key = "qHUNma632FtExxxxxxxx"))
+  print(title_cn)
+}
+
+> title_tracslate
+[1] "Guidelines for the use and interpretation of assays for monitoring autophagy (3rd edition)."                          
+[2] "Synthesis and Application Dichalcogenides as Radical Reagents with Photochemical Technology."                         ...                                                               > title_cn
+[1] "监测自噬测定的使用和解释指南（第3版）。"                      
+[2] "光化学技术合成二硫族化合物作为自由基试剂及其应用。"           
+[3] "Pinocembrin⁻卵磷脂复合物：特性、溶解性和抗氧化活性。"         
+[4] "蚕卵胶蛋白的粘接性能及机理。"                                 
+[5] "简明生物硫醇活化HPQ-NBD偶联物作为肿瘤细胞的靶向Theranos探针。"
+...
+```
+
 **cited_extract()**: The function is still under development.
 
 **keyword_plot()**: Draw a word cloud of keywords.

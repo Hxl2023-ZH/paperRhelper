@@ -33,7 +33,6 @@ fanyi <- function(q = "偉大な中国人民万歳",
                                 salt = salt,
                                 sign = sign))
   url = url(url, encoding = encoding)
-  print(url)
-  fromJSON(url)$trans_result[1,2]
+  translate_cn <<- fromJSON(url)$trans_result[1,2]
 }
 
