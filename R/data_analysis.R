@@ -11,7 +11,7 @@
 #' @importFrom dplyr arrange
 #'
 #' @examples
-#' \dottest{
+#' \donttest{
 #' keyword_plot(final_table$Keyword)
 #' }
 keyword_plot <- function(words, size = 0.7, shape = 'circle'){
@@ -33,7 +33,7 @@ keyword_plot <- function(words, size = 0.7, shape = 'circle'){
 #' @import jiebaR
 #' @import ggplot2
 #' @examples
-#' \dottest{
+#' \donttest{
 #' year_plot(final_table$Year)
 #' }
 year_plot <- function(year) {

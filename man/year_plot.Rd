@@ -16,7 +16,7 @@ line chart
 Counting the number of literature publications per year.
 }
 \examples{
-\dottest{
+\donttest{
 year_plot(final_table$Year)
 }
 }

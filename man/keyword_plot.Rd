@@ -20,7 +20,7 @@ Word cloud diagram
 Keyword frequency statistics.
 }
 \examples{
-\dottest{
+\donttest{
 keyword_plot(final_table$Keyword)
 }
 }
