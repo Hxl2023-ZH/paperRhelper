@@ -3,7 +3,11 @@
 #' @param root The public part of webpage links.
 #' @param page_number Total pages of search results.
 #' @param paper_numbers Total number of retrieved papers.
+#'
 #' @return A data frame including article title, abstract, etc.
+#' @import xml2
+#' @import rvest
+#' @import tidyr
 #' @export
 #' @examples
 #' \donttest{
