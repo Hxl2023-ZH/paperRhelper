@@ -159,6 +159,7 @@ opened      "closed"                                             can read    "ye
 > keyword_plot(final_table$Keyword)
 ```
 
+![image](https://github.com/Hxl2023-ZH/paperRhelper/assets/126218017/50b0f90e-fd35-4e7d-9903-2e0a88f3acae)
 
 
 **year_plot()**: Draw a line chart of the number of publications per year.
@@ -170,7 +171,7 @@ opened      "closed"                                             can read    "ye
 
 
 
-pdf_reference_extract()**: Parse PDF format files and extract the reference of the literature.
+**pdf_reference_extract()**: Parse PDF format files and extract the reference of the literature.
 
 ```R
 # example
