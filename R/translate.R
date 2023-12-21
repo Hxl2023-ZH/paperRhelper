@@ -17,7 +17,7 @@
 #' \donttest{
 #' fanyi(appid = "xxxxxxxxxxxxxx", key = "xxxxxxxxxxxxxx")
 #' }
-fanyi <- function(q = "偉大な中国人民万歳",
+translate <- function(q = "偉大な中国人民万歳",
                   from = "auto",
                   to = "zh",
                   appid = "",

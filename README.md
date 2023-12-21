@@ -134,11 +134,11 @@ for (i in doi_df) {
 
 ```
 
-**fanyi():** Automatically recognizes the text language and translates it, by default to Chinese. Users only need to register a developer account for Baidu Translation API in advance (https://fanyi-api.baidu.com/?fr=pcHeader). Random numbers are automatically generated and the user does not need to enter them manually.
+**translate():** Automatically recognizes the text language and translates it, by default to Chinese. Users only need to register a developer account for Baidu Translation API in advance (https://fanyi-api.baidu.com/?fr=pcHeader). Random numbers are automatically generated and the user does not need to enter them manually.
 
 ```R
 # example
-> fanyi(q = "偉大な中国人民万歳",
+> translate(q = "偉大な中国人民万歳",
       appid = "202312180xxxxxxxx", 
       key = "qHUNma632FtExxxxxxxx")
 
@@ -161,7 +161,7 @@ for (i in 1:length(title_tracslate)){
   print(title_tracslate[[i]])
   Sys.sleep(10) # Avoid access failures caused by frequent visits
   title_cn <- c(title_cn, 
-                fanyi(q = title_tracslate[[i]], appid = "202312180xxxxxxxx", key = "qHUNma632FtExxxxxxxx"))
+                translate(q = title_tracslate[[i]], appid = "202312180xxxxxxxx", key = "qHUNma632FtExxxxxxxx"))
   print(title_cn)
 }
 
