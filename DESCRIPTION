@@ -1,10 +1,9 @@
 Package: paper.Rhelper
-Title: What the Package Does (One Line, Title Case)
+Title: An R package used to assist scientific researchers in literature analysis and organization.
 Version: 0.0.1
 Authors@R: 
-    person("Xinliang", "Hu", "HuXiaoLiang2023@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Xinliang", "Hu",   email = "HuXiaoLiang2023@gmail.com", role = c("aut", "cre"))
+Description: This R package is used to assist scientific researchers in literature analysis and organization.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
