@@ -222,6 +222,35 @@ pdf_reference_extract(pdf_text = pdf_text, begin_word = begin_word, end_word = e
 [1] "nature reviews microbiology                   https://doi.org/10.1038/s41579-023-00984-1"
 ```
 
+**pdf_sra_detect()**: This function can be used to detect the presence of target characters in PDF files. By default, this function will check whether the PDF file contains characters related to the SRA database to determine whether the paper provides second-generation sequencing data.
+
+```R
+# example
+setwd("C:/Users/huxin/Desktop/test")
+fileinput <- list.files("C:/Users/huxin/Desktop/test")
+fileinput
+for (d in fileinput){
+  pdf_sra_detect(pdffile = d) # keyword = NULL
+}
+
+[1] "Default keyword."
+[1] "SRA Data not Found in AmSystems.00332-18.pdf"
+[1] "SRA Data Found in CADVS-8-2100536.pdf"
+[1] "SRA Data not Found in DmSystems.00332-18.pdf"
+```
+
+**pdf_scihub()**: This function can be used to detect the presence of Github links in PDF files, and if the links exist, they will be automatically extracted. After running this function, two files will be generated in the working directory: "pdf_github_found.txt" and "pdf_github_not_found.txt".
+
+```R
+# example
+> for (d in fileinput){
++   try(pdf_github(pdffile = d)) 
++ }
+[1] "      Code availability. The code to reproduce all analyses in the paper is available at https://github.com/courtneyarmour/human_metagenomes_analysis."
+[1] "Github link not found in the paper"
+[1] "      Code availability. The code to reproduce all analyses in the paper is available at https://github.com/courtneyarmour/human_metagenomes_analysis."
+```
+
 ## Note
 
 This package is still under development.
