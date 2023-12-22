@@ -10,7 +10,9 @@ devtools::install_github("Hxl2023-ZH/paperRhelper")
 library(paper.Rhelper)
 ```
 
-## Usage
+## Usage:
+
+### **PART I**
 
 **search_link():** Based on the search terms entered by the user, a search link to the PubMed database is generated for subsequent analysis, and the search results are briefly summarized. Search term for example(including author and publication data): "((Wang, Xin[Author]) AND (Zhang, Yan[Author])) AND ((\"2023/01/02\"[Date - Publication] : \"2023/12/10\"[Date - Publication]))"
 
@@ -122,18 +124,6 @@ plot_coauthors(g)
  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
 ```
 
-**scihub_download()**: Batch download PDF files from sci-hub database.
-
-```R
-# example
-doi_df <- final_table$DOI
-for (i in doi_df) {
-  print(i)
-  try(scihub_download(doi = i, file_dir = "C:/you/path/"), silent = TRUE)
-}
-
-```
-
 **translate():** Automatically recognizes the text language and translates it, by default to Chinese. Users only need to register a developer account for Baidu Translation API in advance (https://fanyi-api.baidu.com/?fr=pcHeader). Random numbers are automatically generated and the user does not need to enter them manually.
 
 ```R
@@ -197,9 +187,21 @@ for (i in 1:length(title_tracslate)){
 > year_plot(final_table$Year)
 ```
 
+### **PART II**
 
+**scihub_download()**: Batch download PDF files from sci-hub database.
 
-**pdf_reference_extract()**: Parse PDF format files and extract the reference of the literature.
+```R
+# example
+doi_df <- final_table$DOI
+for (i in doi_df) {
+  print(i)
+  try(scihub_download(doi = i, file_dir = "C:/you/path/"), silent = TRUE)
+}
+
+```
+
+**pdf_reference_extract()**: Parse PDF format files and extract the reference of the literature. (Note that there are some differences in the installation method of pdftools in Linux compared to Windows)
 
 ```R
 # example
