@@ -52,7 +52,6 @@ pdf_reference_extract <- function(pdf_text = NULL, begin_word = NULL, end_word =
 }
 
 
-
 #' Extract DOI from PDF.
 #'
 #' @param pdf_text PDF file.
@@ -88,3 +87,172 @@ pdf_doi_extract <- function(pdf_text = NULL){
   }
 
 }
+
+
+#' Detecting the presence of specific strings in PDF files
+#'
+#' @param keyword Key word.
+#' @param pdffile PDF file name.
+#'
+#' @import pdftools
+#' @import stringr
+#'
+#' @return SRA character search results.
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' setwd("/you/pdf/dir")
+#' fileinput <- list.files("/you/pdf/dir")
+#' fileinput
+#' for (d in fileinput){
+#'   pdf_sra_detect(pdffile = d)
+#' }
+#' }
+pdf_sra_detect <- function(keyword = NULL, pdffile = NULL) {
+
+  pdf_text <- pdf_text(pdffile)
+  filebase = basename(pdffile)
+
+  # 判断是否有关键词输入
+  sra_word <- NULL
+  if (is.null(keyword)){
+    print("Default keyword.")
+    sra_word <- c("PRJNA", "JNA", "PRJEB", "JEB", "ERP")
+  }else{
+    sra_word <- keyword
+  }
+
+  sra_page <- c()
+  for (i in seq_along(pdf_text)) {
+    if (str_detect(pdf_text[i], regex(paste(sra_word, collapse = "|")))) {
+      sra_page <- c(sra_page, i)
+    }
+  }
+
+  # 判断文献中是否存在
+  if (is.null(sra_page)) {
+    print(paste("SRA Data not Found in", filebase))
+  }else{
+    print(paste("SRA Data Found in", filebase))
+  }
+
+}
+
+
+#' Detect and extract github links for a single page.
+#'
+#' @param pdf_text PDF file name.
+#' @param github_word github related word.
+#' @param git_page_num numeric.
+#' @param filebase file base name.
+#'
+#' @import pdftools
+#' @import stringr
+#'
+#' @return github link.
+#'
+#' @examples
+#' \donttest{
+#' github_link_extract()
+#' }
+github_link_extract <- function(pdf_text = NULL, github_word = NULL, git_page_num = NULL, filebase = NULL) {
+
+  # 相关PDF页面格式化
+  git_page <- str_split(pdf_text[git_page_num], '\n')
+
+  # 确定github单词所在的文本行
+  github_line <- c()
+  for (i in seq_along(git_page[[1]])) {
+    if (str_detect(git_page[[1]][i], github_word)) {
+      github_line <- c(github_line, i)
+    }
+  }
+  github_line
+
+  # 判断一页文本中是否存在多个github链接
+  if (length(github_line) == 1){
+    num0 <- as.numeric(github_line[1])
+    num1 = num0 + 1
+    github_link_line <- git_page[[1]][num0:num1]
+
+    link_line_merge <- paste0(github_link_line[1], github_link_line[2])
+    print(link_line_merge)
+
+    sink("pdf_github_found.txt", append = TRUE)
+    print(paste(filebase, link_line_merge, sep = "\t"))
+    sink()
+  }else{
+    for (i in 1:length(github_line)){
+      num0 <- as.numeric(github_line[i])
+      num1 = num0 + 1
+      github_link_line <- git_page[[1]][num0:num1]
+
+      link_line_merge <- paste0(github_link_line[1], github_link_line[2])
+      print(link_line_merge)
+
+      sink("pdf_github_found.txt", append = TRUE)
+      print(paste(filebase, link_line_merge, sep = "\t"))
+      sink()
+    }
+  }
+
+}
+
+
+#' Detect and extract github link.
+#'
+#' @param pdffile PDF file name.
+#' @param git_word github related word.
+#'
+#' @import pdftools
+#' @import stringr
+#'
+#' @return Github links.
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' setwd("C:/Users/huxin/Desktop/test")
+#' fileinput <- list.files("C:/Users/huxin/Desktop/test")
+#' fileinput
+#' for (d in fileinput){
+#'   try(pdf_github(pdffile = d))
+#' }
+#' }
+pdf_github <- function(pdffile = NULL, git_word = NULL){
+
+  pdf_text <- pdf_text(pdffile)
+  filebase <- basename(pdffile)
+
+  github_word <- NULL
+  if (is.null(git_word)){
+    github_word <- "github"
+  }else{
+    github_word <- git_word
+  }
+
+  #判断github链接数量
+  github_page <- c()
+  for (i in seq_along(pdf_text)) {
+    if (str_detect(pdf_text[i], github_word)) {
+      github_page <- c(github_page, i)
+    }
+  }
+
+  if (is.null(github_page)) {
+    print("Github link not found in the paper")
+    sink("pdf_github_not_found.txt", append = TRUE)
+    print(filebase)
+    sink()
+    break
+  }else{
+    github_page <- unique(github_page)
+  }
+
+  for (f in 1:length(github_page)) {
+    git_page_num <- as.numeric(github_page[f])
+    github_link_extract(pdf_text = pdf_text, github_word = github_word, git_page_num = git_page_num, filebase = filebase)
+  }
+}
+
