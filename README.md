@@ -1,6 +1,6 @@
 ## paper.Rhelper
 
-**paper.Rhelper** is an R package used to assist scientific researchers in literature analysis and organization. This R package can remotely search PubMed and Google Scholar databases and extract key search information through web crawler tools. It also has batch PDF file download functions and online translation functions. The online translation function is implemented based on Baidu Translation API, which can automatically identify the language of the text and translate it. Users can extract key information from a large number of PDF files, such as Github links, through relevant functions.
+**paper.Rhelper** is an R package used to assist scientific researchers in literature analysis and organization. This R package can remotely search PubMed and Google Scholar databases and extract key search information through web crawler tools. It also has batch PDF file download functions and online translation functions. The online translation function is implemented based on Baidu Translation API, which can automatically identify the language of the text and translate it. Users can extract key information from a large number of PDF files, such as Github links and Sequence Read Archive (SRA) data information, through relevant functions.
 
 ## Installation
 
@@ -222,7 +222,7 @@ pdf_reference_extract(pdf_text = pdf_text, begin_word = begin_word, end_word = e
 [1] "nature reviews microbiology                   https://doi.org/10.1038/s41579-023-00984-1"
 ```
 
-**pdf_sra_detect()**: This function can be used to detect the presence of target characters in PDF files. By default, this function will check whether the PDF file contains characters related to the SRA database to determine whether the paper provides second-generation sequencing data.
+**pdf_sra_detect()**: This function can be used to detect the presence of target characters in PDF files. By default, this function will check whether the PDF file contains characters related to the Sequence Read Archive (SRA) data to determine whether the paper provides second-generation sequencing data.
 
 ```R
 # example
