@@ -1,6 +1,6 @@
 ## paper.Rhelper
 
-**paper.Rhelper** is an R package used to assist scientific researchers in literature analysis and organization. This R package can remotely search PubMed and Google Scholar databases and extract key search information through web crawler tools. It also has batch PDF file download functions and online translation functions. The online translation function is implemented based on Baidu Translation API, which can automatically identify the language of the text and translate it.
+**paper.Rhelper** is an R package used to assist scientific researchers in literature analysis and organization. This R package can remotely search PubMed and Google Scholar databases and extract key search information through web crawler tools. It also has batch PDF file download functions and online translation functions. The online translation function is implemented based on Baidu Translation API, which can automatically identify the language of the text and translate it. Users can extract key information from a large number of PDF files, such as Github links, through relevant functions.
 
 ## Installation
 
@@ -250,6 +250,10 @@ for (d in fileinput){
 [1] "Github link not found in the paper"
 [1] "      Code availability. The code to reproduce all analyses in the paper is available at https://github.com/courtneyarmour/human_metagenomes_analysis."
 ```
+
+### **PART III**
+
+Machine learning.
 
 ## Note
 
